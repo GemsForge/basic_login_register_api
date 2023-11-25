@@ -1,4 +1,4 @@
-# basic_login_register_api
+# Basic Login/Register API
 This repository contains a basic Login and Registration API with simple authentication. 
 
 **Project Fignma Mindmap**: https://www.figma.com/file/21uNqYdlW3ffDs4FGY1XXA/01_Project---Basic-Login%2FRegister-API-Mindmap?type=whiteboard&node-id=3-750&t=NQtlwVRUTNWcGqWz-0
