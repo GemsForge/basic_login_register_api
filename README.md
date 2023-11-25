@@ -11,22 +11,25 @@ This repository contains a basic Login and Registration API with simple authenti
 
 ## PHASE 1 (console app vs web API. Establish a database via a console app and convert it to web API.)
 
-1.**User Model**
+1. **User Model**
 
-   1a.  _Data_: User{FirstName, LastName, Email, Username, Password}
+    a.  _Data_: User{FirstName, LastName, Email, Username, Password}
+   
    ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/ec4da183-f781-4446-a5e2-94f2ce011bac)
 
 2. **User Database** (user.db) *See Add User Method in User Repository* I didn't use the sqlite3 cli commands to create the database.
 
-2a.Database manager
+    a. Database manager
+
   ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/41bba5d9-17cb-48e4-8bb0-e2ce1154abe0)
 
 3.**User Repository** with simple CRUD operation. (GetAllUsers, GetUser, AddUser)
-
   3a. Write a method to create DB in User Repo 
+  
   ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/839df7fa-fc76-40a2-a989-02a3746f7d9e)
   
   3b. Write GetAllUsers and GetUserById methods to return User information
+  
   ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/c138ce5f-f16a-44ee-ab19-7c2e3cc21295)
   
   3c. Write the AddUsers method to add User information to the user.db table.
