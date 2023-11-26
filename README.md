@@ -53,10 +53,11 @@ This repository contains a basic Login and Registration API with simple authenti
      
       7a. UserMapper
 
-        ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/501291bb-5cba-4522-8b05-2d0833307ce4)
+     ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/501291bb-5cba-4522-8b05-2d0833307ce4)
 
       7B. Payload (client data)
-                         ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/5ef20e80-b0be-4b48-9ea5-1abca47cbcc3)
+     
+     ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/5ef20e80-b0be-4b48-9ea5-1abca47cbcc3)
   
    9. For a web API, user input won't be taken directly from the console. Instead, it will be received as HTTP requests.
        Update the user input handling logic in your controller to extract data from HTTP requests (e.g., using the FromBody attribute for POST requests).
