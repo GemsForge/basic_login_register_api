@@ -50,17 +50,18 @@ This repository contains a basic Login and Registration API with simple authenti
     
         S/N: Update the AddUser method in the User Repository to try/catch block the block of code to 
   7. Modify User Input Handling
+     
       7a. UserMapper
 
-                         ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/501291bb-5cba-4522-8b05-2d0833307ce4)
+        ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/501291bb-5cba-4522-8b05-2d0833307ce4)
 
       7B. Payload (client data)
                          ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/5ef20e80-b0be-4b48-9ea5-1abca47cbcc3)
   
-   8. For a web API, user input won't be taken directly from the console. Instead, it will be received as HTTP requests.
+   9. For a web API, user input won't be taken directly from the console. Instead, it will be received as HTTP requests.
        Update the user input handling logic in your controller to extract data from HTTP requests (e.g., using the FromBody attribute for POST requests).
   
-   9. Test the API:
+   10. Test the API:
   Use tools like Postman or Swagger UI to test your API endpoints by sending HTTP requests and ensuring they function as expected.
    Verify that the user creation functionality works through the API.
 
