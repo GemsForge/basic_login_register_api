@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.vsidx
+/Login Api/obj/Debug/net6.0/Login Api.AssemblyInfoInputs.cache
+/Login Api/obj/Debug/net6.0/Login Api.assets.cache
+/Login Api/obj/Debug/net6.0/Login Api.GeneratedMSBuildEditorConfig.editorconfig
+*.cs
+/Login Api/obj/Release/net6.0/Login Api.AssemblyInfoInputs.cache
+/Login Api/obj/Release/net6.0
+/.vs/slnx.sqlite
