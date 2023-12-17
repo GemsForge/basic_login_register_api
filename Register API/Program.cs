@@ -1,6 +1,7 @@
 using Register_API.Data_Context;
 using Microsoft.Extensions.DependencyInjection;
 using System.Data.SQLite;
+using Register_API.Model.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Register SQLite connection
 builder.Services.AddScoped<SQLiteConnection>(_ => new SQLiteConnection());
+// Add UserRepository
+builder.Services.AddScoped<UserRepository>();
 // Register DatabaseManager with the connection string
 builder.Services.AddSingleton(new DatabaseManager());
 

@@ -1,0 +1,46 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/basic_login_register_api/FileContentIndex
+/basic_login_register_api/.vs/basic_login_register_api/config
+/basic_login_register_api/.vs/basic_login_register_api/DesignTimeBuild
+/basic_login_register_api/.vs/basic_login_register_api/FileContentIndex
+/basic_login_register_api/obj/Debug/net7.0
+/basic_login_register_api/obj
+/basic_login_register_api/appsettings.Development.json
+# Ignore compiled output and temporary files
+bin/
+obj/
+.vscode/
+
+# Ignore NuGet packages
+*.nuget
+# Ignore user-specific files
+*.suo
+*.user
+
+# Ignore sensitive files or configurations
+appsettings.json
+secrets.txt
+
+# Ignore large files or directories
+large-assets/
+/.vs/basic_login_register_api/config
+/Register API/obj/Register API.csproj.nuget.g.props
+/Register API/obj/Register API.csproj.nuget.dgspec.json
+/Register API/obj/project.nuget.cache
+/Register API/obj/project.assets.json
+/Register API/obj/Debug/net7.0/Register API.pdb
+/Register API/obj/Debug/net7.0/refint/Register API.dll
+/Register API/obj/Debug/net7.0/ref/Register API.dll
+/Register API/obj/Debug/net7.0/Register API.AssemblyInfoInputs.cache
+/Register API/obj/Debug/net7.0/Register API.assets.cache
+/Register API/obj/Debug/net7.0/Register API.csproj.AssemblyReference.cache
+/Register API/obj/Debug/net7.0/Register API.csproj.CoreCompileInputs.cache
+/Register API/obj/Debug/net7.0/Register API.csproj.FileListAbsolute.txt
+/Register API/obj/Debug/net7.0/Register API.dll
+/Register API/obj/Debug/net7.0/Register API.GeneratedMSBuildEditorConfig.editorconfig
+/Register API/obj/Debug/net7.0/Register API.genruntimeconfig.cache
+/Register API/bin/Debug/net7.0/Register API.dll
+/Register API/bin/Debug/net7.0/Register API.pdb

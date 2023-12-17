@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "basic_login_register_api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:65283;http://localhost:65284"
+    }
+  }
+}

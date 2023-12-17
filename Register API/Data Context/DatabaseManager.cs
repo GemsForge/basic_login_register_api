@@ -2,10 +2,10 @@
 
 namespace Register_API.Data_Context
 {
-    internal class DatabaseManager
+    public class DatabaseManager
     {
 
-        private string connectionString = "Data Source=user.db;Version=3;";
+        private readonly string connectionString = "Data Source=user.db;Version=3;";
 
         public SQLiteConnection GetConnection()
         {

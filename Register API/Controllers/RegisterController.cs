@@ -1,6 +1,8 @@
 ﻿using Register_API.Model;
 using Microsoft.AspNetCore.Mvc;
 using Register_API.Model.Repository;
+using Register_API.Model;
+using Register_API.Model.payload;
 
 namespace Register_API.Controllers
 {
@@ -8,24 +10,34 @@ namespace Register_API.Controllers
     [Route("[controller]")]
     public class RegisterController : ControllerBase
     {
-        private readonly UserRepository userRepository = new UserRepository();
+        private readonly UserRepository _userRepository; // Assuming you have a user repository or service to interact with users
 
-        [HttpPost("register")]
-        public IActionResult Register([FromBody] User user)
+        public RegisterController(UserRepository userRepository)
         {
-            if (user == null)
-            {
-                return BadRequest("Invalid user data");
-            }
+            _userRepository = userRepository;
+        }
+        //http
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] RegisterRequestModel registerModel)
+        {  
+            //// Check if the user already exists
+            //if (_userRepository.UserExists(registerModel.Username, registerModel.Email))
+            //{
+            //    return Conflict("User already exists.");
+            //}
 
+            // Perform actual registration
             try
             {
-                userRepository.AddUser(user);
-                return Ok("User added successfully.");
+                 _userRepository.RegisterUser(registerModel);
+
+                // Additional steps like sending confirmation emails, setting up user profiles, etc., can be done here
+
+                return Ok("Registration successful");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Error: {ex.Message}");
+                return StatusCode(500, $"Registration failed: {ex.Message}");
             }
         }
     }

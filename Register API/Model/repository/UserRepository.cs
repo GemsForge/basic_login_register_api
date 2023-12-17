@@ -1,76 +1,65 @@
 ﻿using Dapper;
 using Register_API.Data_Context;
+using Register_API.Model.payload;
 
 namespace Register_API.Model.Repository
 {
-    internal class UserRepository
+    public class UserRepository
     {
         //Initialize database manaager.
-        private DatabaseManager dbManager;
+        private readonly DatabaseManager _dbManager;
 
-        public UserRepository()
+        public UserRepository(DatabaseManager dbManager)
         {
-            dbManager = new DatabaseManager();
+            _dbManager = dbManager;
         }
 
-        public IEnumerable<User> GetAllUsers()
+        public void RegisterUser(RegisterRequestModel newUser)
         {
-            using (var connection = dbManager.GetConnection())
+            using var connection = _dbManager.GetConnection();
+            try
             {
-                connection.Open();
-                string query = "SELECT * FROM Users";
-                return connection.Query<User>(sql: query);
-            }
-        }
+                // Specify the database file path
+                string dbFilePath = "user.db";
 
-        public User GetUserById(int id)
-        {
-            using (var connection = dbManager.GetConnection())
-            {
-                connection.Open();
-                string query = "SELECT * FROM Users WHERE Id = @Id";
-                return connection.QueryFirstOrDefault<User>(sql: query, new { Id = id });
-            }
-        }
-
-        public void AddUser(User user)
-        {
-            using (var connection = dbManager.GetConnection())
-            {
-                try
+                // Check if the database file exists
+                if (File.Exists(dbFilePath))
                 {
-                    // Specify the database file path
-                    string dbFilePath = "user.db";
-
-                    // Check if the database file exists
-                    if (File.Exists(dbFilePath))
-                    {
-                        // If the file exists, proceed with adding user information
-                        connection.Open();
-                        string query = "INSERT INTO Users (FirstName, LastName, Email, Username, Password) VALUES " +
-                            "(@FirstName, @LastName, @Email, @Username, @Password)";
-                        connection.Execute(sql: query, user);
-                    }
-                    else
-                    {
-                        Console.WriteLine("The user database file does not exist. Now creating " + dbFilePath);
-                        CreateUsersTable();
-                    }
+                    // If the file exists, proceed with adding user information
+                    connection.Open();
+                    string query = @"INSERT INTO Users (FirstName, LastName, Email, Username, Password) VALUES " +
+                        "(@FirstName, @LastName, @Email, @Username, @Password)";
+                    connection.Execute(sql: query, newUser);
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                }
+                    Console.WriteLine("The user database file does not exist. Now creating " + dbFilePath);
+                    CreateUsersTable();
+                }                             
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+        public bool AuthenticateUser(LoginRequestModel userToAuthenticate)
+        {
+            using var connection = _dbManager.GetConnection();
+            var sqlSelect = @"
+            SELECT COUNT(*)
+            FROM Users
+            WHERE Email = @Email AND Password = @Password";
+
+            int userCount = connection.ExecuteScalar<int>(sqlSelect, userToAuthenticate);
+            return userCount > 0;
         }
 
         public void CreateUsersTable()
         {
-            using (var connection = dbManager.GetConnection())
-            {
-                connection.Open();
+            using var connection = _dbManager.GetConnection();
+            connection.Open();
 
-                string createTableSql = @"
+            string createTableSql = @"
                 CREATE TABLE IF NOT EXISTS Users (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     FirstName TEXT NOT NULL,
@@ -80,8 +69,24 @@ namespace Register_API.Model.Repository
                     Password TEXT NOT NULL
                 )";
 
-                connection.Execute(createTableSql);
-            }
+            connection.Execute(createTableSql);
+        }
+        public IEnumerable<User> GetAllUsers()
+        {
+            using var connection = _dbManager.GetConnection();
+            connection.Open();
+            string query = "SELECT * FROM Users";
+            return connection.Query<User>(sql: query);
+        }
+
+        public User GetUserById(int id)
+        {
+            using var connection = _dbManager.GetConnection();
+            connection.Open();
+            string query = "SELECT * FROM Users WHERE Id = @Id";
+#pragma warning disable CS8603 // Possible null reference return.
+            return connection.QueryFirstOrDefault<User>(sql: query, new { Id = id });
+#pragma warning restore CS8603 // Possible null reference return.
         }
     }
 }
