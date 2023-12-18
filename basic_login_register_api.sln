@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Register API", "Register API\Register API.csproj", "{AA296E48-7AE2-4650-A325-38611D43163C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA296E48-7AE2-4650-A325-38611D43163C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA296E48-7AE2-4650-A325-38611D43163C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA296E48-7AE2-4650-A325-38611D43163C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA296E48-7AE2-4650-A325-38611D43163C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B4C7E4E-783D-4863-B837-28D7A5629FBE}
+	EndGlobalSection
+EndGlobal
