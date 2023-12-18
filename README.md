@@ -1,7 +1,9 @@
 # Basic User Authentication API
 This project is a user authentication API built using C# with .NET 7, Dapper as the persistence client, and SQLite as the database. It provides endpoints to register users and authenticate them, using Swagger for endpoint testing.
 
-**Project Fignma Mindmap**: https://www.figma.com/file/21uNqYdlW3ffDs4FGY1XXA/01_Project---Basic-Login%2FRegister-API-Mindmap?type=whiteboard&node-id=3-750&t=NQtlwVRUTNWcGqWz-0
+**Project Fignma Mindmap**: 
+![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/903857e5-b7ee-46fd-9ed7-67d672446711)
+
 ### Features
  - Language: C#
  - Framework:.NET v7/SDK 7
