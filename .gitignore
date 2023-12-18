@@ -44,3 +44,5 @@ large-assets/
 /Register API/obj/Debug/net7.0/Register API.genruntimeconfig.cache
 /Register API/bin/Debug/net7.0/Register API.dll
 /Register API/bin/Debug/net7.0/Register API.pdb
+*.vsidx
+
