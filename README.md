@@ -1,69 +1,60 @@
-# Basic Login/Register API
-This repository contains a basic Login and Registration API with simple authentication. 
+# Basic User Authentication API
+This project is a user authentication API built using C# with .NET 7, Dapper as the persistence client, and SQLite as the database. It provides endpoints to register users and authenticate them, using Swagger for endpoint testing.
 
 **Project Fignma Mindmap**: https://www.figma.com/file/21uNqYdlW3ffDs4FGY1XXA/01_Project---Basic-Login%2FRegister-API-Mindmap?type=whiteboard&node-id=3-750&t=NQtlwVRUTNWcGqWz-0
-### Tech Stack
- Language = C#
- Framework = .NET v7/SDK 7
- Database Client = Sqlite v3 
- Persistence Client = Dapper 
+### Features
+ - Language: C#
+ - Framework:.NET v7/SDK 7
+ - Database: SQLite v3 
+ - Persistence Client: Dapper
+ - Payloads: Payloads: LoginRequestModel and RegisterRequestModel
+ 
 
+## Getting Started
+### Prerequisites
+- .NET 7 SDK
+- SQLite
 
-## PHASE 1 (console app vs web API. Establish a database via a console app and convert it to web API.)
+### Installation
+1. Clone the repository. `git clone https://github.com/your-username/user-authentication-api.git
+`
+2. Navigate to the project directory:
+3. Build and run the project
+   `dotnet build` & `dotnet run`
 
-1. **User Model**
+## Usage
+1. Access Swagger UI by navigating to http://localhost:<port>/swagger in your web browser.
+2. Register a user by providing the following information:
+- First name
+- Last name
+- Email
+- Username
+- Password
+3. Use the registered username and password to log in.
+4. The API will verify the credentials against the database and return a "Login Successful!" message in the console.
 
-    a.  _Data_: User{FirstName, LastName, Email, Username, Password}
-   
-   ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/ec4da183-f781-4446-a5e2-94f2ce011bac)
+## Endpoints
+### POST/register
+Register a new user.
 
-2. **User Database** (user.db) *See Add User Method in User Repository* I didn't use the sqlite3 cli commands to create the database.
+Request Body(`RegisterRequestModel`):
+```c sharp 
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john@example.com",
+  "username": "johndoe",
+  "password": "secretpassword"
+}
+```
+### POST/login
+Authenticate an existing user.
 
-    a. Database manager
-
-  ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/41bba5d9-17cb-48e4-8bb0-e2ce1154abe0)
-
-3.**User Repository** with simple CRUD operation. (GetAllUsers, GetUser, AddUser)
-  3a. Write a method to create DB in User Repo 
-  
-  ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/839df7fa-fc76-40a2-a989-02a3746f7d9e)
-  
-  3b. Write GetAllUsers and GetUserById methods to return User information
-  
-  ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/c138ce5f-f16a-44ee-ab19-7c2e3cc21295)
-  
-  3c. Write the AddUsers method to add User information to the user.db table.
-  ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/dc0cd98e-7316-4293-a6c4-010371a5dd19)
-
-  ## Convert to WebAPI
-  4. Create a new web app and move logic to the Register Controller
-      - Identify the logic related to user input, database interaction, and user creation from your console application.
-      - For example, the user creation logic could go into an action method within the UserController.
-    
-        
-  5. Update Dependencies:
-      - Make sure to include the necessary dependencies (Dapper, System.Data.SQLite, etc.) in your web API project.
-
-  6. Define Routes and Endpoints:
-      - Define routes and endpoints for your API methods within the UserController.
-      - For example, you might have a POST endpoint for user creation: POST /api/user/register.
-    
-        S/N: Update the AddUser method in the User Repository to try/catch block the block of code to 
-  7. Modify User Input Handling
-     
-      7a. UserMapper
-
-     ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/501291bb-5cba-4522-8b05-2d0833307ce4)
-
-      7B. Payload (client data)
-     
-     ![image](https://github.com/Dbrown127/basic_login_register_api/assets/114959173/5ef20e80-b0be-4b48-9ea5-1abca47cbcc3)
-  
-   9. For a web API, user input won't be taken directly from the console. Instead, it will be received as HTTP requests.
-       Update the user input handling logic in your controller to extract data from HTTP requests (e.g., using the FromBody attribute for POST requests).
-  
-   10. Test the API:
-  Use tools like Postman or Swagger UI to test your API endpoints by sending HTTP requests and ensuring they function as expected.
-   Verify that the user creation functionality works through the API.
-
+Request Body(`LoginRequestModel`):
+```c sharp
+{
+  "username": "johndoe",
+  "password": "secretpassword"
+}
+```
    
