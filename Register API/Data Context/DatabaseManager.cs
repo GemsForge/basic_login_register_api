@@ -4,12 +4,23 @@ namespace Register_API.Data_Context
 {
     public class DatabaseManager
     {
+        //TODO: Move connection string to appsettings.json
+        private readonly string _connectionString = @"Data Source=users.db; Version=3;";
 
-        private readonly string connectionString = "Data Source=user.db;Version=3;";
-
-        public SQLiteConnection GetConnection()
+        public SQLiteConnection? GetConnection()
         {
-            return new SQLiteConnection(connectionString);
+
+            try
+            {
+                SQLiteConnection connection = new(_connectionString);
+                connection.Open();
+                return connection;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
         }
     }
 }

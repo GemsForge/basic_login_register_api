@@ -1,5 +1,4 @@
-﻿using Register_API.Model;
-using System;
+﻿using System;
 
 namespace Register_API.Model.payload
 {

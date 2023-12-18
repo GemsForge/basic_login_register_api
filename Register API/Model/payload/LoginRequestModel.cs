@@ -4,7 +4,9 @@ namespace Register_API.Model.payload
 {
 
     /// <summary>
-    /// Summary description for Class1
+    ///A LoginRequestModel payload encapsulates the necessary information required for a user to 
+    ///authenticate and log into an application. It typically contains fields that identify and 
+    ///verify the user's identity during the login process.
     /// </summary>
     public class LoginRequestModel
     {

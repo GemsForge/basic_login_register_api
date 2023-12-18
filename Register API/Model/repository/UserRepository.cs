@@ -16,26 +16,13 @@ namespace Register_API.Model.Repository
 
         public void RegisterUser(RegisterRequestModel newUser)
         {
-            using var connection = _dbManager.GetConnection();
+            var connection = _dbManager.GetConnection();
             try
             {
-                // Specify the database file path
-                string dbFilePath = "user.db";
-
-                // Check if the database file exists
-                if (File.Exists(dbFilePath))
-                {
-                    // If the file exists, proceed with adding user information
-                    connection.Open();
-                    string query = @"INSERT INTO Users (FirstName, LastName, Email, Username, Password) VALUES " +
+                string query = @"INSERT INTO Users (FirstName, LastName, Email, Username, Password) VALUES " +
                         "(@FirstName, @LastName, @Email, @Username, @Password)";
-                    connection.Execute(sql: query, newUser);
-                }
-                else
-                {
-                    Console.WriteLine("The user database file does not exist. Now creating " + dbFilePath);
-                    CreateUsersTable();
-                }                             
+                connection.Execute(sql: query, newUser);
+                connection.Close();
             }
             catch (Exception ex)
             {
@@ -44,23 +31,23 @@ namespace Register_API.Model.Repository
         }
         public bool AuthenticateUser(LoginRequestModel userToAuthenticate)
         {
-            using var connection = _dbManager.GetConnection();
+            var connection = _dbManager.GetConnection();
             var sqlSelect = @"
             SELECT COUNT(*)
             FROM Users
-            WHERE Email = @Email AND Password = @Password";
+            WHERE Username = @Username AND Password = @Password";
 
             int userCount = connection.ExecuteScalar<int>(sqlSelect, userToAuthenticate);
+            connection.Close();
             return userCount > 0;
         }
 
         public void CreateUsersTable()
         {
             using var connection = _dbManager.GetConnection();
-            connection.Open();
 
-            string createTableSql = @"
-                CREATE TABLE IF NOT EXISTS Users (
+
+            string createTableSql = @"CREATE TABLE IF NOT EXISTS Users (
                     Id INTEGER PRIMARY KEY AUTOINCREMENT,
                     FirstName TEXT NOT NULL,
                     LastName TEXT NOT NULL,
@@ -70,12 +57,14 @@ namespace Register_API.Model.Repository
                 )";
 
             connection.Execute(createTableSql);
+            connection.Close();
         }
         public IEnumerable<User> GetAllUsers()
         {
             using var connection = _dbManager.GetConnection();
             connection.Open();
             string query = "SELECT * FROM Users";
+            connection.Close();
             return connection.Query<User>(sql: query);
         }
 
