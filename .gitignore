@@ -46,3 +46,4 @@ large-assets/
 /Register API/bin/Debug/net7.0/Register API.pdb
 *.vsidx
 
+/.vs/basic_login_register_api/DesignTimeBuild/.dtbcache.v2
