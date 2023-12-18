@@ -46,3 +46,8 @@ large-assets/
 /Register API/bin/Debug/net7.0/Register API.pdb
 *.vsidx
 
+*.wsuo
+/.vs/basic_login_register_api/DesignTimeBuild/.dtbcache.v2
+*.v2
+/.vs/ProjectEvaluation/basic_login_register_api.metadata.v7.bin
+/.vs/ProjectEvaluation/basic_login_register_api.projects.v7.bin
